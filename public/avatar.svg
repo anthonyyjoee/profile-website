@@ -1,0 +1,64 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="800" fill="#141417"/>
+  
+  <!-- Subtle Architectural Grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#d4ff00" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#141417" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="silhouetteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a32"/>
+      <stop offset="100%" stop-color="#18181f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#grid)"/>
+  <circle cx="300" cy="380" r="280" fill="url(#glow)"/>
+
+  <!-- Minimalist Geometric Engineer Silhouette -->
+  <g transform="translate(100, 160)">
+    <!-- Aura Rings -->
+    <circle cx="200" cy="200" r="160" stroke="#d4ff00" stroke-width="1" stroke-dasharray="4 6" opacity="0.35"/>
+    <circle cx="200" cy="200" r="190" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    
+    <!-- Head / Torso Silhouette -->
+    <!-- Shoulders -->
+    <path d="M 50 380 C 80 300, 140 280, 200 280 C 260 280, 320 300, 350 380 Z" fill="url(#silhouetteGrad)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5"/>
+    <!-- Neck -->
+    <path d="M 175 250 L 225 250 L 220 285 L 180 285 Z" fill="#202028"/>
+    <!-- Head -->
+    <ellipse cx="200" cy="180" rx="65" ry="80" fill="url(#silhouetteGrad)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5"/>
+    
+    <!-- Technical Glasses / Focus Visor Line -->
+    <line x1="150" y1="175" x2="250" y2="175" stroke="#d4ff00" stroke-width="2.5" opacity="0.85"/>
+    <circle cx="175" cy="175" r="16" fill="none" stroke="#d4ff00" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="225" cy="175" r="16" fill="none" stroke="#d4ff00" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Subtle Mechanical Crosshair Overlay -->
+    <line x1="200" y1="40" x2="200" y2="360" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+    <line x1="40" y1="200" x2="360" y2="200" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  </g>
+
+  <!-- Technical Overlay HUD Elements -->
+  <!-- Top Left Indicator -->
+  <text x="40" y="55" fill="#d4ff00" font-family="monospace" font-size="12" letter-spacing="2">SYS_PORTRAIT // ID-0492</text>
+  <text x="40" y="75" fill="#87878d" font-family="monospace" font-size="10" letter-spacing="1">LOCATION: JAKARTA (WIB)</text>
+
+  <!-- Top Right Tech Tag -->
+  <text x="560" y="55" text-anchor="end" fill="#87878d" font-family="monospace" font-size="10" letter-spacing="1">AWS CERTIFIED</text>
+  <circle cx="572" cy="52" r="3" fill="#d4ff00"/>
+
+  <!-- Bottom Details Bar -->
+  <rect x="30" y="700" width="540" height="70" rx="12" fill="#0e0e10" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="55" y="730" fill="#fbfbfb" font-family="-apple-system, sans-serif" font-weight="700" font-size="14" letter-spacing="0.5">ANTHONY</text>
+  <text x="55" y="750" fill="#87878d" font-family="monospace" font-size="11">BACKEND SYSTEMS • RAILS • AWS SOLUTIONS ARCHITECT</text>
+  <text x="545" y="742" text-anchor="end" fill="#d4ff00" font-family="monospace" font-weight="bold" font-size="12">4 YRS EXP</text>
+
+  <!-- Frame Border -->
+  <rect x="15" y="15" width="570" height="770" rx="16" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+</svg>
