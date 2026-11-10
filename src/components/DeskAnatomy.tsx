@@ -1627,13 +1627,17 @@ export default function DeskAnatomy() {
       />
 
       {/* Fun Personal Desk Callout Badge */}
-      <div className="absolute bottom-1 sm:bottom-2 z-10 flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#18181b]/85 border border-white/[0.08] backdrop-blur-md text-[10px] sm:text-[11px] font-mono text-[#8e8e93] select-none pointer-events-none shadow-lg">
+      <div className="absolute bottom-1 sm:bottom-2 z-10 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#18181b]/90 border border-white/[0.08] backdrop-blur-md text-[10px] sm:text-[11px] font-mono text-[#8e8e93] select-none pointer-events-none shadow-lg whitespace-nowrap max-w-[95%]">
         <span className="w-1.5 h-1.5 rounded-full bg-[#8ddd8d] animate-pulse flex-shrink-0" />
-        <span className="text-white/80">
-          Yes, this is basically 1:1 with my actual desk setup
+        <span className="text-white/80 whitespace-nowrap">
+          <span className="sm:hidden">1:1 with my actual desk</span>
+          <span className="hidden sm:inline 2xl:hidden">1:1 replica of my actual desk setup</span>
+          <span className="hidden 2xl:inline">Yes, this is basically 1:1 with my actual desk setup</span>
         </span>
-        <span className="hidden md:inline text-white/20">•</span>
-        <span className="hidden md:inline text-white/40 text-[10px]">drag to inspect 360°</span>
+        <span className="hidden sm:inline lg:hidden xl:inline text-white/20 select-none">•</span>
+        <span className="hidden sm:inline lg:hidden xl:inline text-white/40 text-[10px] whitespace-nowrap">
+          drag to inspect 360°
+        </span>
       </div>
     </div>
   );
