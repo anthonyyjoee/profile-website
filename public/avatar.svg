@@ -47,18 +47,19 @@
   <!-- Technical Overlay HUD Elements -->
   <!-- Top Left Indicator -->
   <text x="40" y="55" fill="#d4ff00" font-family="monospace" font-size="12" letter-spacing="2">SYS_PORTRAIT // ID-0492</text>
-  <text x="40" y="75" fill="#87878d" font-family="monospace" font-size="10" letter-spacing="1">LOCATION: JAKARTA (WIB)</text>
+  <text x="40" y="75" fill="#87878d" font-family="monospace" font-size="10" letter-spacing="1">LOCATION: INDONESIA (WIB)</text>
 
   <!-- Top Right Tech Tag -->
-  <text x="560" y="55" text-anchor="end" fill="#87878d" font-family="monospace" font-size="10" letter-spacing="1">AWS CERTIFIED</text>
+  <text x="560" y="55" text-anchor="end" fill="#87878d" font-family="monospace" font-size="10" letter-spacing="1">WEB • MOBILE • CLOUD</text>
   <circle cx="572" cy="52" r="3" fill="#d4ff00"/>
 
   <!-- Bottom Details Bar -->
   <rect x="30" y="700" width="540" height="70" rx="12" fill="#0e0e10" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
   <text x="55" y="730" fill="#fbfbfb" font-family="-apple-system, sans-serif" font-weight="700" font-size="14" letter-spacing="0.5">ANTHONY</text>
-  <text x="55" y="750" fill="#87878d" font-family="monospace" font-size="11">BACKEND SYSTEMS • RAILS • AWS SOLUTIONS ARCHITECT</text>
-  <text x="545" y="742" text-anchor="end" fill="#d4ff00" font-family="monospace" font-weight="bold" font-size="12">4 YRS EXP</text>
+  <text x="55" y="750" fill="#87878d" font-family="monospace" font-size="11">FULL-STACK &amp; MOBILE • REACT NATIVE • GO • NODE • CLOUD</text>
+  <text x="545" y="742" text-anchor="end" fill="#d4ff00" font-family="monospace" font-weight="bold" font-size="12">SHIPPING ☕</text>
 
   <!-- Frame Border -->
   <rect x="15" y="15" width="570" height="770" rx="16" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
 </svg>
+
