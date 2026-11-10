@@ -124,11 +124,49 @@
   transform-origin: bottom left;
 }
 
-/* 13g Project Showcase Transition */
-@keyframes projectSwitch {
+/* 13g Project Showcase Transition - Directional Slide & Tactile Bloom */
+@keyframes projectCardSlideDown {
   0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(22px) scale(0.985);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes projectCardSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-22px) scale(0.985);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-project-slide-down {
+  animation: projectCardSlideDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-project-slide-up {
+  animation: projectCardSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-project-switch {
+  animation: projectCardSlideDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes projectItemStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
   }
   100% {
     opacity: 1;
@@ -136,6 +174,14 @@
   }
 }
 
-.animate-project-switch {
-  animation: projectSwitch 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-project-stagger-1 {
+  animation: projectItemStagger 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.04s backwards;
+}
+
+.animate-project-stagger-2 {
+  animation: projectItemStagger 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s backwards;
+}
+
+.animate-project-stagger-3 {
+  animation: projectItemStagger 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.12s backwards;
 }
