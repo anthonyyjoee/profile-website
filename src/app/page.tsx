@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import StudioHeader from "@/components/StudioHeader";
 import AboutSection from "@/components/AboutSection";
 import ProjectShowcase from "@/components/ProjectShowcase";
+import DeskAnatomy from "@/components/DeskAnatomy";
 import { personalData } from "@/data/portfolio";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/Icons";
 import { sound } from "@/utils/sound";
@@ -258,90 +259,98 @@ export default function Home() {
         }}
       >
         {/* =========================================================
-            SCREEN 0: MONUMENTAL HERO
+            SCREEN 0: MONUMENTAL HERO & ANATOMY WORKSTATION
             ========================================================= */}
         <section className="w-full h-[100dvh] flex flex-col justify-between px-6 sm:px-12 lg:px-16 2xl:px-20 3xl:px-28 4xl:px-36 pt-20 sm:pt-24 2xl:pt-28 pb-4 sm:pb-6 2xl:pb-8 relative">
-          {/* Centerpiece: Monumental Typography */}
-          <div className="my-auto relative z-10 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl flex flex-col justify-center space-y-4 sm:space-y-5 2xl:space-y-7">
-            <div className="space-y-0.5">
-              {/* Line 1 Mask Reveal */}
-              <div className="reveal-mask">
-                <h1 className="reveal-item delay-1 text-4xl sm:text-6xl md:text-7xl lg:text-[5.5vw] font-bold uppercase tracking-tighter text-[#fbfbfb] leading-[0.92]">
-                  {personalData.hero.greeting}
-                </h1>
+          {/* Centerpiece: 2-Column Grid (Typography on Left & 3D Anatomy Workstation on Right) */}
+          <div className="my-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 items-center">
+            {/* Left Column: Monumental Typography & Actions */}
+            <div className="lg:col-span-7 flex flex-col justify-center space-y-4 sm:space-y-5 2xl:space-y-7">
+              <div className="space-y-0.5">
+                {/* Line 1 Mask Reveal */}
+                <div className="reveal-mask">
+                  <h1 className="reveal-item delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-[4vw] xl:text-[4.2vw] 2xl:text-[4.5vw] font-bold uppercase tracking-tighter text-[#fbfbfb] leading-[0.92]">
+                    {personalData.hero.greeting}
+                  </h1>
+                </div>
+
+                {/* Line 2 Mask Reveal */}
+                <div className="reveal-mask">
+                  <span className="reveal-item delay-2 text-4xl sm:text-5xl md:text-6xl lg:text-[4vw] xl:text-[4.2vw] 2xl:text-[4.5vw] font-bold uppercase tracking-tighter text-[#8e8e93] leading-[0.92] hover:text-[#e0e055] transition-colors duration-500">
+                    {personalData.hero.title}
+                  </span>
+                </div>
               </div>
 
-              {/* Line 2 Mask Reveal */}
+              {/* Subtext Reveal - Friendly, Passionate & Coffee-Fueled */}
               <div className="reveal-mask">
-                <span className="reveal-item delay-2 text-4xl sm:text-6xl md:text-7xl lg:text-[5.5vw] font-bold uppercase tracking-tighter text-[#8e8e93] leading-[0.92] hover:text-[#e0e055] transition-colors duration-500">
-                  {personalData.hero.title}
-                </span>
+                <p className="reveal-item delay-3 max-w-xl 2xl:max-w-2xl text-sm sm:text-base 2xl:text-lg text-[#8e8e93] font-normal leading-relaxed">
+                  {personalData.hero.description}
+                </p>
+              </div>
+
+              {/* Action Buttons & Social Icons */}
+              <div className="reveal-mask pt-2 2xl:pt-4">
+                <div className="reveal-item delay-4 w-full space-y-4 2xl:space-y-6">
+                  {/* Primary Row: Explore Works + Get in Touch */}
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-5 2xl:gap-6">
+                    <button
+                      onClick={() => goToSection(2)}
+                      className="px-6 2xl:px-8 py-3.5 2xl:py-4 rounded-xl 2xl:rounded-2xl bg-[#fbfbfb] hover:bg-[#e0e055] text-black font-bold text-xs 2xl:text-sm uppercase font-mono tracking-wider transition-all duration-300 shadow-md inline-flex items-center gap-2.5 2xl:gap-3 group cursor-pointer"
+                    >
+                      <span>{personalData.hero.exploreButtonText}</span>
+                      <ArrowDown className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 group-hover:translate-y-0.5 transition-transform" />
+                    </button>
+
+                    <button
+                      onClick={() => goToSection(4)}
+                      className="px-6 2xl:px-8 py-3.5 2xl:py-4 rounded-xl 2xl:rounded-2xl bg-[#191919] hover:bg-[#222222] text-[#8e8e93] hover:text-[#fbfbfb] border border-white/[0.08] hover:border-white/[0.2] text-xs 2xl:text-sm uppercase font-mono tracking-wider transition-colors inline-flex items-center gap-2.5 2xl:gap-3 cursor-pointer"
+                    >
+                      <Mail className="w-3.5 h-3.5 2xl:w-4 2xl:h-4" />
+                      <span>{personalData.hero.contactButtonText}</span>
+                    </button>
+                  </div>
+
+                  {/* Social Platform Icons Row - Driven by TS Data */}
+                  <div className="flex items-center gap-5 2xl:gap-7 pt-2 2xl:pt-3">
+                    {personalData.socials.map((social) => {
+                      const hoverColor =
+                        social.platform === "github"
+                          ? "hover:text-[#8ddd8d]"
+                          : social.platform === "linkedin"
+                          ? "hover:text-[#6066ee]"
+                          : "hover:text-[#faaafa]";
+
+                      return (
+                        <a
+                          key={social.platform}
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`text-[#8e8e93] ${hoverColor} transition-colors duration-200 inline-flex items-center justify-center group cursor-pointer`}
+                          aria-label={`${social.label} Profile`}
+                          title={`${social.label} Profile`}
+                        >
+                          {social.platform === "github" && (
+                            <GithubIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                          )}
+                          {social.platform === "linkedin" && (
+                            <LinkedinIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                          )}
+                          {social.platform === "instagram" && (
+                            <InstagramIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                          )}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Subtext Reveal - Friendly, Passionate & Coffee-Fueled */}
-            <div className="reveal-mask">
-              <p className="reveal-item delay-3 max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl text-sm sm:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl text-[#8e8e93] font-normal leading-relaxed">
-                {personalData.hero.description}
-              </p>
-            </div>
-
-            {/* Action Buttons & Social Icons */}
-            <div className="reveal-mask pt-2 2xl:pt-4">
-              <div className="reveal-item delay-4 w-full space-y-4 2xl:space-y-6">
-                {/* Primary Row: Explore Works + Get in Touch */}
-                <div className="flex flex-wrap items-center gap-4 sm:gap-5 2xl:gap-6">
-                  <button
-                    onClick={() => goToSection(2)}
-                    className="px-6 2xl:px-8 py-3.5 2xl:py-4 rounded-xl 2xl:rounded-2xl bg-[#fbfbfb] hover:bg-[#e0e055] text-black font-bold text-xs 2xl:text-sm uppercase font-mono tracking-wider transition-all duration-300 shadow-md inline-flex items-center gap-2.5 2xl:gap-3 group cursor-pointer"
-                  >
-                    <span>{personalData.hero.exploreButtonText}</span>
-                    <ArrowDown className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 group-hover:translate-y-0.5 transition-transform" />
-                  </button>
-
-                  <button
-                    onClick={() => goToSection(4)}
-                    className="px-6 2xl:px-8 py-3.5 2xl:py-4 rounded-xl 2xl:rounded-2xl bg-[#191919] hover:bg-[#222222] text-[#8e8e93] hover:text-[#fbfbfb] border border-white/[0.08] hover:border-white/[0.2] text-xs 2xl:text-sm uppercase font-mono tracking-wider transition-colors inline-flex items-center gap-2.5 2xl:gap-3 cursor-pointer"
-                  >
-                    <Mail className="w-3.5 h-3.5 2xl:w-4 2xl:h-4" />
-                    <span>{personalData.hero.contactButtonText}</span>
-                  </button>
-                </div>
-
-                {/* Social Platform Icons Row - Driven by TS Data */}
-                <div className="flex items-center gap-5 2xl:gap-7 pt-2 2xl:pt-3">
-                  {personalData.socials.map((social) => {
-                    const hoverColor =
-                      social.platform === "github"
-                        ? "hover:text-[#8ddd8d]"
-                        : social.platform === "linkedin"
-                        ? "hover:text-[#6066ee]"
-                        : "hover:text-[#faaafa]";
-
-                    return (
-                      <a
-                        key={social.platform}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`text-[#8e8e93] ${hoverColor} transition-colors duration-200 inline-flex items-center justify-center group cursor-pointer`}
-                        aria-label={`${social.label} Profile`}
-                        title={`${social.label} Profile`}
-                      >
-                        {social.platform === "github" && (
-                          <GithubIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
-                        )}
-                        {social.platform === "linkedin" && (
-                          <LinkedinIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
-                        )}
-                        {social.platform === "instagram" && (
-                          <InstagramIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
-                        )}
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
+            {/* Right Column: Rotatable 360° Anatomy Workstation Figure */}
+            <div className="lg:col-span-5 relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[480px] xl:h-[540px] 2xl:h-[640px] 3xl:h-[720px] flex items-center justify-center">
+              <DeskAnatomy />
             </div>
           </div>
 
