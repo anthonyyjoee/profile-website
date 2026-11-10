@@ -1,13 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-3xl: 120rem; /* 1920px (Desktop Full HD / QHD) */
+  --breakpoint-4xl: 160rem; /* 2560px (32" Monitor / 4K UHD) */
+}
+
 @layer base {
   :root {
-    --background: #0e0e10;
-    --surface: #141417;
+    --background: #131313;
+    --surface: #191919;
     --foreground: #fbfbfb;
-    --muted: #87878d;
-    --accent: #d4ff00; /* 13g electric lime */
-    --accent-purple: #a78bfa;
+    --muted: #8e8e93;
+    --accent-mint: #8ddd8d;
+    --accent-blue: #6066ee;
+    --accent-yellow: #e0e055;
+    --accent-pink: #faaafa;
+    --accent: #e0e055;
   }
 
   html,
@@ -114,4 +122,20 @@
 .hover-underline-13g:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+/* 13g Project Showcase Transition */
+@keyframes projectSwitch {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-project-switch {
+  animation: projectSwitch 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
