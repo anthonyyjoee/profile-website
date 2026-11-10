@@ -11,7 +11,7 @@ interface StudioHeaderProps {
 }
 
 export default function StudioHeader({ currentSection, onNavigate }: StudioHeaderProps) {
-  const [audioActive, setAudioActive] = useState(false);
+  const [audioActive, setAudioActive] = useState(sound.enabled);
   const totalScenes = personalData.navigation.length + 1;
 
   const toggleAudio = () => {

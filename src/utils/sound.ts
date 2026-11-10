@@ -1,7 +1,23 @@
 // Lightweight Web Audio API synthesizer for tactile UI micro-sounds (zero external audio files)
 class SoundFX {
   private ctx: AudioContext | null = null;
-  public enabled: boolean = false;
+  public enabled: boolean = true;
+
+  constructor() {
+    if (typeof window !== "undefined") {
+      const unlockAudio = () => {
+        this.init();
+        window.removeEventListener("pointerdown", unlockAudio);
+        window.removeEventListener("keydown", unlockAudio);
+        window.removeEventListener("wheel", unlockAudio);
+        window.removeEventListener("touchstart", unlockAudio);
+      };
+      window.addEventListener("pointerdown", unlockAudio, { passive: true });
+      window.addEventListener("keydown", unlockAudio, { passive: true });
+      window.addEventListener("wheel", unlockAudio, { passive: true });
+      window.addEventListener("touchstart", unlockAudio, { passive: true });
+    }
+  }
 
   private init() {
     if (!this.ctx && typeof window !== "undefined") {
@@ -17,32 +33,45 @@ class SoundFX {
     this.enabled = !this.enabled;
     if (this.enabled) {
       this.init();
-      this.click(800, 0.04);
+      this.click(480, 0.08);
     }
     return this.enabled;
   }
 
-  public click(freq = 600, duration = 0.03) {
+  public click(freq = 420, duration = 0.09) {
     if (!this.enabled) return;
     this.init();
     if (!this.ctx) return;
 
     try {
+      const now = this.ctx.currentTime;
+      // Soft, smooth acoustic tone using warm filtered sine synthesis
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
+      const filter = this.ctx.createBiquadFilter();
+
+      // Warm low-pass filter to eliminate harsh clicks/transients
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(950, now);
 
       osc.type = "sine";
-      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(120, this.ctx.currentTime + duration);
+      // Gentle, subtle pitch descent (warm harmonic tone instead of sharp laser drop)
+      const baseFreq = Math.min(Math.max(freq * 0.72, 260), 520);
+      osc.frequency.setValueAtTime(baseFreq, now);
+      osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.88, now + duration);
 
-      gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+      // Smooth attack and cushioned exponential decay
+      const attackTime = 0.012; // 12ms gentle fade-in to prevent any abrupt pops
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.042, now + attackTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
-      osc.connect(gain);
+      osc.connect(filter);
+      filter.connect(gain);
       gain.connect(this.ctx.destination);
 
-      osc.start();
-      osc.stop(this.ctx.currentTime + duration);
+      osc.start(now);
+      osc.stop(now + duration + 0.01);
     } catch {
       // Audio context might be restricted before interaction
     }
@@ -54,21 +83,23 @@ class SoundFX {
     if (!this.ctx) return;
 
     try {
+      const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(440, this.ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(880, this.ctx.currentTime + 0.02);
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(380, now);
+      osc.frequency.exponentialRampToValueAtTime(460, now + 0.04);
 
-      gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.02);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.016, now + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
 
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.02);
+      osc.start(now);
+      osc.stop(now + 0.05);
     } catch {
       // Ignored
     }
