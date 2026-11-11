@@ -1556,7 +1556,7 @@ export default function DeskAnatomy() {
     };
 
     const domElement = renderer.domElement;
-    domElement.style.touchAction = "none";
+    domElement.style.touchAction = "pan-y";
     domElement.style.display = "block";
     domElement.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointermove", onPointerMove);
@@ -1627,7 +1627,7 @@ export default function DeskAnatomy() {
       />
 
       {/* Fun Personal Desk Callout Badge */}
-      <div className="absolute bottom-1 sm:bottom-2 z-10 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#18181b]/90 border border-white/[0.08] backdrop-blur-md text-[10px] sm:text-[11px] font-mono text-[#8e8e93] select-none pointer-events-none shadow-lg whitespace-nowrap max-w-[95%]">
+      <div className="absolute bottom-0 sm:bottom-2 z-10 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#18181b]/90 border border-white/[0.08] backdrop-blur-md text-[9.5px] sm:text-[11px] font-mono text-[#8e8e93] select-none pointer-events-none shadow-lg whitespace-nowrap max-w-[95%]">
         <span className="w-1.5 h-1.5 rounded-full bg-[#8ddd8d] animate-pulse flex-shrink-0" />
         <span className="text-white/80 whitespace-nowrap">
           <span className="sm:hidden">1:1 with my actual desk</span>
