@@ -138,30 +138,17 @@ export default function StudioHeader({ currentSection, onNavigate }: StudioHeade
             </span>
           </button>
 
-          <div className="flex items-center gap-1.5">
-            {/* Audio Toggle */}
-            <button
-              onClick={toggleAudio}
-              className={`p-2 rounded-full transition-colors cursor-pointer ${
-                audioActive ? "text-[#e0e055] bg-zinc-800" : "text-zinc-500"
-              }`}
-              aria-label="Toggle interface sound"
-            >
-              {audioActive ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
-            </button>
-
-            {/* Menu Drawer Toggle */}
-            <button
-              onClick={() => {
-                sound.click(620, 0.02);
-                setMobileMenuOpen(!mobileMenuOpen);
-              }}
-              className="p-2 rounded-full bg-white/[0.05] text-[#fbfbfb] hover:bg-white/[0.1] transition-colors cursor-pointer"
-              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            >
-              {mobileMenuOpen ? <X className="w-3.5 h-3.5" /> : <Menu className="w-3.5 h-3.5" />}
-            </button>
-          </div>
+          {/* Menu Drawer Toggle */}
+          <button
+            onClick={() => {
+              sound.click(620, 0.02);
+              setMobileMenuOpen(!mobileMenuOpen);
+            }}
+            className="p-2 rounded-full bg-white/[0.05] text-[#fbfbfb] hover:bg-white/[0.1] transition-colors cursor-pointer"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          >
+            {mobileMenuOpen ? <X className="w-3.5 h-3.5" /> : <Menu className="w-3.5 h-3.5" />}
+          </button>
         </div>
       </header>
 
@@ -215,20 +202,9 @@ export default function StudioHeader({ currentSection, onNavigate }: StudioHeade
             </div>
           </div>
 
-          {/* Drawer Footer with Quick Platform Links & Audio Status */}
-          <div className="pt-6 border-t border-white/[0.08] space-y-4">
-            <div className="flex items-center justify-between text-xs font-mono text-[#8e8e93]">
-              <span>AUDIO EFFECTS</span>
-              <button
-                onClick={toggleAudio}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] text-[#fbfbfb] cursor-pointer"
-              >
-                {audioActive ? <Volume2 className="w-3 h-3 text-[#e0e055]" /> : <VolumeX className="w-3 h-3" />}
-                <span className="text-[10px]">{audioActive ? "ENABLED" : "MUTED"}</span>
-              </button>
-            </div>
-
-            <div className="flex items-center justify-center gap-6 pt-2">
+          {/* Drawer Footer with Quick Platform Links */}
+          <div className="pt-6 border-t border-white/[0.08]">
+            <div className="flex items-center justify-center gap-6">
               {personalData.socials.map((s) => (
                 <a
                   key={s.platform}
