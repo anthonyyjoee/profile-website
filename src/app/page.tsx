@@ -10,6 +10,7 @@ import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/Icons";
 import { sound } from "@/utils/sound";
 import {
   ArrowDown,
+  ArrowUpRight,
   Mail,
 } from "lucide-react";
 
@@ -376,38 +377,57 @@ export default function Home() {
                     </button>
                   </div>
 
-                  {/* Social Platform Icons Row - Driven by TS Data */}
-                  <div className="flex items-center gap-5 2xl:gap-7 pt-2 2xl:pt-3">
-                    {personalData.socials.map((social) => {
-                      const hoverColor =
-                        social.platform === "github"
-                          ? "hover:text-[#8ddd8d]"
-                          : social.platform === "linkedin"
-                          ? "hover:text-[#6066ee]"
-                          : "hover:text-[#faaafa]";
+                  {/* Social Platform Icons & Direct Email - Driven by TS Data */}
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 2xl:gap-8 pt-2 2xl:pt-3">
+                    <div className="flex items-center gap-4 sm:gap-5 2xl:gap-6">
+                      {personalData.socials.map((social) => {
+                        const hoverColor =
+                          social.platform === "github"
+                            ? "hover:text-[#8ddd8d]"
+                            : social.platform === "linkedin"
+                            ? "hover:text-[#6066ee]"
+                            : social.platform === "instagram"
+                            ? "hover:text-[#faaafa]"
+                            : "hover:text-[#e0e055]";
 
-                      return (
-                        <a
-                          key={social.platform}
-                          href={social.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`text-[#8e8e93] ${hoverColor} transition-colors duration-200 inline-flex items-center justify-center group cursor-pointer p-1`}
-                          aria-label={`${social.label} Profile`}
-                          title={`${social.label} Profile`}
-                        >
-                          {social.platform === "github" && (
-                            <GithubIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
-                          )}
-                          {social.platform === "linkedin" && (
-                            <LinkedinIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
-                          )}
-                          {social.platform === "instagram" && (
-                            <InstagramIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
-                          )}
-                        </a>
-                      );
-                    })}
+                        return (
+                          <a
+                            key={social.platform}
+                            href={social.url}
+                            target={social.platform === "email" ? undefined : "_blank"}
+                            rel={social.platform === "email" ? undefined : "noopener noreferrer"}
+                            onClick={() => sound.click(600, 0.02)}
+                            className={`text-[#8e8e93] ${hoverColor} transition-colors duration-200 inline-flex items-center justify-center group cursor-pointer p-1`}
+                            aria-label={`${social.label} Profile`}
+                            title={`${social.label} (${social.url.replace("mailto:", "")})`}
+                          >
+                            {social.platform === "github" && (
+                              <GithubIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                            )}
+                            {social.platform === "linkedin" && (
+                              <LinkedinIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                            )}
+                            {social.platform === "instagram" && (
+                              <InstagramIcon className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                            )}
+                            {social.platform === "email" && (
+                              <Mail className="w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-transform group-hover:scale-110" />
+                            )}
+                          </a>
+                        );
+                      })}
+                    </div>
+
+                    <div className="h-3.5 w-[1px] bg-white/[0.1] hidden sm:block" />
+
+                    <a
+                      href={`mailto:${personalData.email}`}
+                      onClick={() => sound.click(600, 0.02)}
+                      className="text-xs 2xl:text-sm font-mono text-[#8e8e93] hover:text-[#e0e055] transition-colors inline-flex items-center gap-2 group cursor-pointer"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#e0e055]" />
+                      <span>{personalData.email}</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -578,26 +598,41 @@ export default function Home() {
               {personalData.contact.description}
             </p>
 
+            {/* Direct Email Link Badge */}
+            <div className="pt-1">
+              <a
+                href={`mailto:${personalData.email}`}
+                onClick={() => sound.click(600, 0.02)}
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#191919] hover:bg-[#222222] border border-white/[0.08] hover:border-[#e0e055]/50 text-xs sm:text-sm 2xl:text-base font-mono text-[#fbfbfb] hover:text-[#e0e055] transition-all shadow-md group cursor-pointer"
+              >
+                <Mail className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#e0e055] shrink-0" />
+                <span className="font-semibold">{personalData.email}</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#8e8e93] group-hover:text-[#e0e055] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+              </a>
+            </div>
+
             {/* Social Platform Icons Row - Like in Hero */}
-            <div className="flex items-center gap-5 sm:gap-6 2xl:gap-8 pt-3 2xl:pt-6">
+            <div className="flex items-center gap-5 sm:gap-6 2xl:gap-8 pt-2 2xl:pt-4">
               {personalData.socials.map((social) => {
                 const hoverColor =
                   social.platform === "github"
                     ? "hover:text-[#8ddd8d]"
                     : social.platform === "linkedin"
                     ? "hover:text-[#6066ee]"
-                    : "hover:text-[#faaafa]";
+                    : social.platform === "instagram"
+                    ? "hover:text-[#faaafa]"
+                    : "hover:text-[#e0e055]";
 
                 return (
                   <a
                     key={social.platform}
                     href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={social.platform === "email" ? undefined : "_blank"}
+                    rel={social.platform === "email" ? undefined : "noopener noreferrer"}
                     onClick={() => sound.click(600, 0.02)}
                     className={`text-[#8e8e93] ${hoverColor} transition-colors duration-200 inline-flex items-center justify-center group cursor-pointer p-1.5`}
                     aria-label={`${social.label} Profile`}
-                    title={`${social.label} Profile`}
+                    title={`${social.label} (${social.url.replace("mailto:", "")})`}
                   >
                     {social.platform === "github" && (
                       <GithubIcon className="w-6 h-6 sm:w-7 sm:h-7 2xl:w-8 2xl:h-8 transition-transform group-hover:scale-110" />
@@ -607,6 +642,9 @@ export default function Home() {
                     )}
                     {social.platform === "instagram" && (
                       <InstagramIcon className="w-6 h-6 sm:w-7 sm:h-7 2xl:w-8 2xl:h-8 transition-transform group-hover:scale-110" />
+                    )}
+                    {social.platform === "email" && (
+                      <Mail className="w-6 h-6 sm:w-7 sm:h-7 2xl:w-8 2xl:h-8 transition-transform group-hover:scale-110" />
                     )}
                   </a>
                 );

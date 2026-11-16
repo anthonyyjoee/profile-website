@@ -100,11 +100,10 @@ export default function ProjectShowcase({
                   sound.click(650, 0.02);
                   onSelectProject(idx);
                 }}
-                className={`h-1.5 2xl:h-2 rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer ${
-                  idx === activeProjectIndex
+                className={`h-1.5 2xl:h-2 rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer ${idx === activeProjectIndex
                     ? "w-8 2xl:w-10 3xl:w-12"
                     : "w-2 2xl:w-2.5 3xl:w-3 bg-white/20 hover:bg-white/40"
-                }`}
+                  }`}
                 style={{
                   backgroundColor: idx === activeProjectIndex ? activeAccent : undefined,
                 }}
@@ -265,28 +264,25 @@ export default function ProjectShowcase({
                   sound.click(650, 0.02);
                   onSelectProject(idx);
                 }}
-                className={`group relative z-10 py-5 sm:py-6 2xl:py-8 3xl:py-10 4xl:py-12 px-6 sm:px-8 2xl:px-10 3xl:px-12 rounded-2xl 3xl:rounded-3xl cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between border border-transparent ${
-                  isActive
+                className={`group relative z-10 py-5 sm:py-6 2xl:py-8 3xl:py-10 4xl:py-12 px-6 sm:px-8 2xl:px-10 3xl:px-12 rounded-2xl 3xl:rounded-3xl cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between border border-transparent ${isActive
                     ? "translate-x-2.5 sm:translate-x-3.5 2xl:translate-x-4"
                     : "hover:bg-white/[0.02] translate-x-0"
-                }`}
+                  }`}
               >
                 <div className="flex items-baseline gap-5 sm:gap-7 2xl:gap-9 3xl:gap-11 pl-1">
                   <span
-                    className={`font-mono text-xs 2xl:text-sm 3xl:text-base 4xl:text-lg transition-all duration-300 ${
-                      isActive ? "scale-110 font-bold" : "text-[#727278]"
-                    }`}
+                    className={`font-mono text-xs 2xl:text-sm 3xl:text-base 4xl:text-lg transition-all duration-300 ${isActive ? "scale-110 font-bold" : "text-[#727278]"
+                      }`}
                     style={{ color: isActive ? accent : undefined }}
                   >
                     {indexStr}
                   </span>
                   <div>
                     <h3
-                      className={`text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl 3xl:text-5xl 4xl:text-6xl font-semibold tracking-tight transition-colors duration-300 ${
-                        isActive
+                      className={`text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl 3xl:text-5xl 4xl:text-6xl font-semibold tracking-tight transition-colors duration-300 ${isActive
                           ? "text-[#fbfbfb]"
                           : "text-[#8e8e93] group-hover:text-[#fbfbfb]"
-                      }`}
+                        }`}
                     >
                       {project.title}
                     </h3>
@@ -305,16 +301,14 @@ export default function ProjectShowcase({
 
                 {/* Vertically Centered Arrow Icon with Focus Right Margin */}
                 <div
-                  className={`flex items-center justify-center shrink-0 self-center transition-all duration-300 ${
-                    isActive ? "mr-2 sm:mr-3 2xl:mr-4" : "mr-0"
-                  }`}
+                  className={`flex items-center justify-center shrink-0 self-center transition-all duration-300 ${isActive ? "mr-2 sm:mr-3 2xl:mr-4" : "mr-0"
+                    }`}
                 >
                   <ArrowUpRight
-                    className={`w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-all duration-300 ${
-                      isActive
+                    className={`w-5 h-5 2xl:w-6 2xl:h-6 3xl:w-7 3xl:h-7 transition-all duration-300 ${isActive
                         ? "scale-110"
                         : "text-[#727278] group-hover:text-[#fbfbfb] group-hover:translate-x-0.5"
-                    }`}
+                      }`}
                     style={{ color: isActive ? accent : undefined }}
                   />
                 </div>
@@ -327,11 +321,10 @@ export default function ProjectShowcase({
         <div className="w-full lg:col-span-5 relative">
           <div
             key={selected.id}
-            className={`${
-              slideDirection === "down"
+            className={`${slideDirection === "down"
                 ? "animate-project-slide-down"
                 : "animate-project-slide-up"
-            } relative p-6 sm:p-8 2xl:p-10 3xl:p-12 4xl:p-14 rounded-3xl 3xl:rounded-[2.5rem] bg-[#191919] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 space-y-4 2xl:space-y-6 3xl:space-y-7`}
+              } relative p-6 sm:p-8 2xl:p-10 3xl:p-12 4xl:p-14 rounded-3xl 3xl:rounded-[2.5rem] bg-[#191919] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 space-y-4 2xl:space-y-6 3xl:space-y-7`}
           >
             {/* Top Category Pill & Period */}
             <div className="flex items-center justify-between text-xs 2xl:text-sm font-mono animate-project-stagger-1">
@@ -425,7 +418,7 @@ export default function ProjectShowcase({
             style={{ backgroundColor: activeAccent }}
           />
           <span key={selected.id} className="animate-project-stagger-1 inline-block">
-            ACTIVE // {selected.title.toUpperCase()}
+            {selected.title.toUpperCase()}
           </span>
         </div>
         <span className="text-[#727278]">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { sound } from "@/utils/sound";
 import { personalData } from "@/data/portfolio";
-import { Volume2, VolumeX, Menu, X, ArrowUpRight } from "lucide-react";
+import { Volume2, VolumeX, Menu, X, ArrowUpRight, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/Icons";
 
 interface StudioHeaderProps {
@@ -209,14 +209,15 @@ export default function StudioHeader({ currentSection, onNavigate }: StudioHeade
                 <a
                   key={s.platform}
                   href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={s.platform === "email" ? undefined : "_blank"}
+                  rel={s.platform === "email" ? undefined : "noopener noreferrer"}
                   className="text-[#8e8e93] hover:text-[#fbfbfb] p-2 transition-colors cursor-pointer"
                   aria-label={s.label}
                 >
                   {s.platform === "github" && <GithubIcon className="w-5 h-5" />}
                   {s.platform === "linkedin" && <LinkedinIcon className="w-5 h-5" />}
                   {s.platform === "instagram" && <InstagramIcon className="w-5 h-5" />}
+                  {s.platform === "email" && <Mail className="w-5 h-5" />}
                 </a>
               ))}
             </div>

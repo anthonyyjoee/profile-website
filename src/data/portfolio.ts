@@ -120,6 +120,7 @@ export interface ContactData {
   headingPrefix: string;
   headingHighlight: string;
   description: string;
+  email: string;
   actions: ContactAction[];
   colophon: {
     copyright: string;
@@ -130,6 +131,7 @@ export interface ContactData {
 export interface PortfolioData {
   name: string;
   title: string;
+  email: string;
   location: string;
   availability: string;
   tagline: string;
@@ -147,6 +149,7 @@ export const personalData: PortfolioData = {
   // --- Global Identity ---
   name: "Anthony",
   title: "Software Developer",
+  email: "anthonyyjoee@gmail.com",
   location: "Indonesia",
   availability: "Full-Stack Web & Mobile Development",
   tagline:
@@ -177,6 +180,11 @@ export const personalData: PortfolioData = {
       label: "Instagram",
       platform: "instagram",
       url: "https://www.instagram.com/anthonyyjoee/",
+    },
+    {
+      label: "Email",
+      platform: "email",
+      url: "mailto:anthonyyjoee@gmail.com",
     },
   ],
 
@@ -213,48 +221,47 @@ export const personalData: PortfolioData = {
     sectionTag: "01 / ABOUT",
     sectionTitle: "About Me",
     locationStatus: "[SOFTWARE DEVELOPER]",
-    lead: "I build cross-platform mobile apps and web platforms, handling the whole process from database design to shipping on the App Store and Google Play.",
+    lead: "Instead of wondering what I can do, just tell me what you need built. I take ownership of projects end-to-end, delivering software with sharp technical execution and refined product taste.",
     paragraphs: [
-      "On the frontend, I work heavily with React and React Native for iOS and Android. For the backend, I choose the tool that fits the workload, mostly building clean, fast services with Go or Node.js, backed by PostgreSQL, MongoDB, or Firebase.",
-      "I don't just write application code; I set up and maintain the infrastructure too. That means managing cloud environments on AWS and Azure, configuring CI/CD pipelines, and seeing mobile apps through review and release on Google Play and the Apple App Store.",
-      "Basically, as long as my coffee mug is full, I keep things shipping.",
+      "I focus on complete, end-to-end delivery. You don't have to micromanage the process or worry about how the pieces connect—give me the goal, and I'll architect the solution, make sound technical trade-offs, and carry it through to a dependable, production-ready release.",
+      "Great software requires more than clean code; it demands genuine taste. I care deeply about user experience, visual hierarchy, and the subtle interactions that make an interface feel alive and effortless. Combined with clear, proactive communication, I ensure you always know where things stand and can trust the final outcome to perform at the highest level.",
     ],
-    motto: "Basically, as long as my coffee mug is full, I keep things shipping.",
-    mottoAuthor: "ANTHONY • FULL-STACK & MOBILE DEVELOPER",
+    motto: "Instead of asking what I can do, just tell me what you need built.",
+    mottoAuthor: "ANTHONY • SOFTWARE DEVELOPER",
     focusPillars: [
       {
         number: "01",
-        tag: "MOBILE & WEB",
-        description: "React Native for iOS and Android, React & Next.js for web",
+        tag: "END-TO-END OWNERSHIP",
+        description: "From initial concept and architecture to polish and production release.",
         color: "#8ddd8d",
       },
       {
         number: "02",
-        tag: "BACKEND & DATA",
-        description: "Go, Node.js, PostgreSQL, MongoDB & Firebase",
+        tag: "UI CRAFT & TASTE",
+        description: "Thoughtful visual hierarchy and software that feels exceptional to use.",
         color: "#6066ee",
       },
       {
         number: "03",
-        tag: "CLOUD & DEPLOYMENT",
-        description: "AWS, Azure, CI/CD, App Store & Google Play",
+        tag: "PROACTIVE & RELIABLE",
+        description: "Clear communication, transparent progress, and dependable execution.",
         color: "#e0e055",
       },
     ],
     portrait: {
       image: "/avatar.webp",
       fallbackImage: "/avatar.svg",
-      alt: "Anthony, Full-Stack & Mobile Software Developer",
+      alt: "Anthony, Software Developer",
       objectPosition: "center 38%",
       // locationTag: "AVAILABLE FOR WORK",
       locationTag: "",
       locationColor: "#8ddd8d",
       badgeName: "ANTHONY",
-      badgeStatus: "FULL-STACK & MOBILE",
+      badgeStatus: "PRODUCT & ENGINEERING",
       badgeColor: "#8ddd8d",
     },
     statusBar: {
-      text: "FULL-STACK WEB • CROSS-PLATFORM MOBILE • CLOUD & STORE RELEASES",
+      text: "",
       hint: "SCROLL TO VIEW PROJECTS",
     },
   },
@@ -266,17 +273,17 @@ export const personalData: PortfolioData = {
     {
       id: "ajerly-car-rental",
       title: "Ajerly",
-      role: "Full-Stack & Mobile Developer",
+      role: "Mobile & Frontend Developer",
       period: "Client Project • Saudi Arabia",
       accentColor: "#8ddd8d",
       description:
-        "A car rental marketplace in Saudi Arabia. I built the platform from scratch across three portals: an admin panel for operations, a vendor portal for rental companies to manage fleets, and a mobile app for customers to book cars.",
+        "A car rental marketplace in Saudi Arabia. I contributed to designing the core application architecture and built the user-facing platforms from scratch across an operations admin panel, a fleet vendor portal, and a customer mobile app.",
       highlights: [
-        "Built three distinct portals: an operations admin panel in React, a fleet vendor portal in React, and the customer mobile app in React Native for iOS and Android.",
-        "Developed the backend with Go and PostgreSQL to handle real-time vehicle availability, booking state machines, and vendor fleet management.",
-        "Integrated PayFort (Amazon Payment Services) for card payments, and handled deployments to the App Store and Google Play.",
+        "Contributed to designing the core application architecture across three distinct client platforms: an operations admin dashboard in React, a fleet vendor portal in React, and the customer mobile app in React Native.",
+        "Implemented real-time vehicle discovery, dynamic multi-step booking flows, interactive vehicle status tracking, and vendor fleet management interfaces.",
+        "Integrated PayFort (Amazon Payment Services) for secure card checkouts, and handled deployments to the App Store and Google Play.",
       ],
-      tags: ["React", "React Native", "Go", "PostgreSQL", "PayFort", "iOS & Android", "App Store", "Google Play"],
+      tags: ["React Native", "React", "TypeScript", "PayFort", "Application Architecture", "Mobile UI/UX", "iOS & Android", "App Store", "Google Play"],
       demoUrl: "https://ajerlycarrental.com",
       actionLabel: "Visit Ajerly",
       featured: true,
@@ -284,17 +291,17 @@ export const personalData: PortfolioData = {
     {
       id: "jasmine-trades",
       title: "Jasmine Trades",
-      role: "Full-Stack & Mobile Developer",
+      role: "Frontend & Mobile Developer",
       period: "Client Project • Global B2B",
       accentColor: "#6066ee",
       description:
-        "A B2B commodity trading platform that brings together suppliers, buyers, and traders. Built with Vue and wrapped with Capacitor to deliver both a web portal and publishable mobile apps.",
+        "A B2B commodity trading platform connecting suppliers, buyers, and traders. Built with Vue and wrapped with Capacitor to deliver both a responsive web portal and publishable mobile apps.",
       highlights: [
-        "Implemented a single portal with role-based dashboards for three user types: platform admins, commodity suppliers, and buyers/traders.",
-        "Built the frontend with Vue and used Capacitor to package it into native iOS and Android apps for the App Store and Google Play.",
-        "Wrote backend services in Go with PostgreSQL for trading orders, RFQ workflows, audit logging, and automated deployment pipelines.",
+        "Implemented a unified client application with role-based dashboards for three user types: platform admins, commodity suppliers, and buyers/traders.",
+        "Built interactive commodity trading workflows, dynamic RFQ negotiation forms, product catalogs, and real-time transaction activity feeds.",
+        "Developed the cross-platform application with Vue and Capacitor, packaging and publishing native builds for the App Store and Google Play.",
       ],
-      tags: ["Vue.js", "Capacitor", "Go", "PostgreSQL", "B2B Marketplace", "Cross-Platform", "App Store", "Google Play"],
+      tags: ["Vue.js", "Capacitor", "TypeScript", "B2B Marketplace", "Cross-Platform", "Mobile UI/UX", "App Store", "Google Play"],
       demoUrl: "https://www.jasminetrades.com/",
       actionLabel: "Visit Jasmine Trades",
       featured: true,
@@ -302,17 +309,17 @@ export const personalData: PortfolioData = {
     {
       id: "growreach-saas",
       title: "GrowReach",
-      role: "Full-Stack Engineer",
+      role: "Frontend Engineer",
       period: "Company Product • SaaS",
       accentColor: "#faaafa",
       description:
-        "A SaaS tool built to help creators and sales teams grow their LinkedIn presence and generate inbound leads through automated, contextual engagement.",
+        "A SaaS tool built to help creators and sales teams grow their LinkedIn presence and generate inbound leads through automated, contextual engagement. I helped design the core product architecture and led frontend development.",
       highlights: [
-        "Built the web dashboard with React and TypeScript, including creator targeting, scheduled comment queues, and a unified lead inbox.",
-        "Wrote Go backend workers and PostgreSQL schemas to handle background scheduling, lead scoring, and rate-limit safety checks.",
-        "Integrated Stripe for recurring subscription billing and PostHog to track user activity, feature adoption, and onboarding funnels.",
+        "Helped design the core product architecture and built the web dashboard with React and TypeScript, including creator targeting, scheduled comment queues, and a unified lead inbox.",
+        "Engineered campaign configuration interfaces, interactive lead scoring tables, live queue visualizers, and safety limit status monitors.",
+        "Integrated Stripe for recurring subscription billing and PostHog product analytics to track user onboarding funnels and feature adoption.",
       ],
-      tags: ["React", "Go", "PostgreSQL", "Stripe", "PostHog", "LinkedIn Automation", "SaaS"],
+      tags: ["React", "TypeScript", "Tailwind CSS", "Stripe", "PostHog", "Product Architecture", "Dashboard UI", "SaaS"],
       demoUrl: "https://growreach.app/",
       actionLabel: "Visit GrowReach",
       featured: true,
@@ -320,17 +327,17 @@ export const personalData: PortfolioData = {
     {
       id: "groweasy-business",
       title: "GrowEasy for Business",
-      role: "Mobile & Full-Stack Developer",
+      role: "Mobile & Frontend Developer",
       period: "Company Product • Mobile App",
       accentColor: "#e0e055",
       description:
-        "An appointment and business management platform for salons and spas. Features an admin portal with role-based access for salon staff and an intuitive booking app for clients.",
+        "An appointment and business management platform for salons and spas. I contributed to designing the multi-tier application architecture across a multi-role web portal for salon staff and an intuitive mobile booking app for clients.",
       highlights: [
-        "Built two separate portals: a role-based admin dashboard for salon owners, managers, and stylists, alongside a customer booking interface.",
-        "Maintained and published the mobile app on Google Play and the App Store for live roster management, appointment updates, and client notes.",
-        "Designed backend services in Go with PostgreSQL, using role-based permissions to keep staff data and financial reports secure.",
+        "Contributed to designing the multi-tier application architecture and built two client interfaces: a role-based admin dashboard for salon owners and stylists, alongside a customer booking app.",
+        "Created interactive calendar scheduling views, role-gated navigation, live staff roster management, and visual revenue performance metrics.",
+        "Integrated Stripe for seamless client checkouts and PostHog for in-app product analytics, maintaining and publishing the mobile app on Google Play and the App Store.",
       ],
-      tags: ["React Native", "Go", "PostgreSQL", "RBAC", "Google Play", "App Store", "Salon Management"],
+      tags: ["React Native", "React", "TypeScript", "Stripe", "PostHog", "Application Architecture", "Mobile UI/UX", "Google Play", "App Store"],
       demoUrl: "https://play.google.com/store/apps/details?id=groweasy.salon.business&hl=id",
       actionLabel: "View on Google Play",
       featured: true,
@@ -407,6 +414,7 @@ export const personalData: PortfolioData = {
     sectionTag: "04 / CONTACT",
     headingPrefix: "HAVE A PROJECT IN MIND?",
     headingHighlight: "LET'S TALK.",
+    email: "anthonyyjoee@gmail.com",
     description:
       "Whether you're looking for a full-stack engineer, need a cross-platform mobile app built from scratch, or want to scale your backend, feel free to reach out.",
     actions: [

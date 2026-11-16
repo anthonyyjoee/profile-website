@@ -119,8 +119,8 @@ export default function AboutSection() {
       {/* 13g Minimalist Bottom Status Bar (Desktop only >= md) */}
       <div className="hidden md:flex items-center justify-between text-[11px] 2xl:text-xs 3xl:text-sm font-mono text-[#8e8e93] pt-2 2xl:pt-4">
         <div className="flex items-center gap-2 2xl:gap-2.5">
-          <span className="w-1.5 h-1.5 2xl:w-2 2xl:h-2 rounded-full bg-[#e0e055]" />
-          <span>{about.statusBar.text}</span>
+          {/* <span className="w-1.5 h-1.5 2xl:w-2 2xl:h-2 rounded-full bg-[#e0e055]" /> */}
+          {/* <span>{about.statusBar.text}</span> */}
         </div>
         <span className="text-[#727278]">{about.statusBar.hint}</span>
       </div>
